@@ -2,19 +2,21 @@ const router = require("express").Router();
 const request = require('request');
 const Books = require("../models/Books.js");
 
-router.get("/api/googlebooks/:search", (req, res) => {
-  const searchTerm = req.params.search;
+// Pagination
+// You can paginate the volumes list by specifying two values in the parameters for the request:
+// startIndex - The position in the collection at which to start. The index of the first item is 0.
+// maxResults - The maximum number of results to return. The default is 10, and the maximum allowable value is 40.
+
+router.get("/api/googlebooks/:search/:start/:max", (req, res) => {
+  const { searchTerm, start, max } = req.params
   console.log(searchTerm);
-  const query = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${process.env.API_KEY}`;
+  const query = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&startIndex=${start}&maxResults=${max}&key=${process.env.API_KEY}`;
   request(query, function(error, response, body) {
-    console.error('error:', error); // Print the error if one occurred
-    // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML for the Google homepage.
-    console.log("typeof body: ", typeof body);
+    console.error('error:', error);
+    // console.log('statusCode:', response && response.statusCode); 
+    // console.log('body:', body); 
     const jbody = JSON.parse(body);
-    console.log("typeof jbody: ", typeof jbody);
-    console.log(typeof jbody.items)
-    res.json(jbody.items);
+    res.json(jbody);
   });
 });
 

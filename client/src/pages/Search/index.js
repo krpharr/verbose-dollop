@@ -4,6 +4,12 @@ import API from "../../utils/API";
 function Search(){
   const [search, setSearch] = useState("");
   const [searchResults, setResults] = useState("");
+  const [page, setPage] = useState({
+    pageNumber: 0,
+    numPages: 1,
+    start: 0,
+    max: 20
+  });
 
   // useEffect(()=>{
   //   if(search !== ""){    
@@ -21,11 +27,8 @@ function Search(){
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    API.search(search).then(res => {
+    API.search(search, page.start, page.max).then(res => {
       const {data} = res;
-      console.log("typeof: res:", typeof res);
-      console.log("typeof: data:", typeof data);
-      // const jdata = JSON.parse(data);
       console.log(data);
       setResults(data);
     });
