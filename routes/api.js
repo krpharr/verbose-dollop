@@ -10,8 +10,11 @@ router.get("/api/googlebooks/:search", (req, res) => {
     console.error('error:', error); // Print the error if one occurred
     // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     console.log('body:', body); // Print the HTML for the Google homepage.
-    const { data } = body;
-    res.json(body);
+    console.log("typeof body: ", typeof body);
+    const jbody = JSON.parse(body);
+    console.log("typeof jbody: ", typeof jbody);
+    console.log(typeof jbody.items)
+    res.json(jbody.items);
   });
 });
 
