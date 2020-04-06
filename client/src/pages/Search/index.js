@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import BookCard from "../../components/BookCard";
 import API from "../../utils/API";
 
 function Search(){
   const [search, setSearch] = useState("");
   const [searchResults, setResults] = useState("");
-  const [page, setPage] = useState({
+  const [pagination, setPagination] = useState({
     pageNumber: 0,
     numPages: 1,
     start: 0,
@@ -27,7 +28,8 @@ function Search(){
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    API.search(search, page.start, page.max).then(res => {
+    console.log(search);
+    API.search(search, pagination.start, pagination.max).then(res => {
       const {data} = res;
       console.log(data);
       setResults(data);
@@ -35,9 +37,18 @@ function Search(){
   };
 
   const mapResults = () => {
-    if(searchResults.length > 0){
+    if(searchResults){
       const {items} = searchResults;
-      console.log(searchResults.items);
+      console.log(items);
+      const itemMap = items.map(i => {
+        return(
+          <li key={i.id}>
+            <BookCard {...i} />
+            {/* <div>{i.volumeInfo.title}</div> */}
+          </li>
+        )
+      });
+      return itemMap;
     }
   };
 
@@ -57,9 +68,9 @@ function Search(){
         >Search
         </button>
       </form>
-      <div>
-        {/* {searchResults} */}
-      </div>
+      <ul>
+        {mapResults()}
+      </ul>
     </div>
   );
 };
