@@ -1,6 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const dotenv = require("dotenv");
+const routes = require("./routes/api");
+
+const result = dotenv.config();
+if (result.error) {
+  throw result.error;
+}
+console.log(result.parsed);
+console.log(process.env.API_KEY);
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -14,12 +24,18 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+app.use(routes)
+  // Define any API routes before this runs
+  // app.get("*", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  // });
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
+});
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
