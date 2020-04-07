@@ -33,7 +33,7 @@ function BookCard(props){
     </div>
     <div className="card horizontal">
       <div className="card-image">
-        <img src={bookObj.image} alt="image not available"></img>
+        <img src={bookObj.image} alt="book cover"></img>
       </div>
       <div className="card-stacked">
         <div className="card-content">

@@ -44,7 +44,6 @@ function Search(){
         return(
           <li key={i.id}>
             <BookCard {...i} />
-            {/* <div>{i.volumeInfo.title}</div> */}
           </li>
         )
       });
@@ -52,8 +51,12 @@ function Search(){
     }
   };
 
+  const handlePagination = (event) => {
+    console.log(event.target.id);
+  };
+
   return(
-    <div>
+    <div className="container">
       <h1>Search</h1>
       <form>
         <input 
@@ -71,6 +74,10 @@ function Search(){
       <ul>
         {mapResults()}
       </ul>
+      <div>
+        <button className="btn" id="prev" onClick={(event)=>handlePagination(event)}>Prev</button>
+        <button className="btn" id="next" onClick={(event)=>handlePagination(event)}>Next</button>
+      </div>
     </div>
   );
 };
