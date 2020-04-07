@@ -4,12 +4,14 @@ import "./style.css";
 
 function BookCard(props){
 
+  const authors = props.volumeInfo.authors === undefined ? [] : props.volumeInfo.authors;
   const thumbnail = props.volumeInfo.imageLinks === undefined ? "/assets/images/unavailable.png" : props.volumeInfo.imageLinks.thumbnail;
   const description = props.volumeInfo.description === undefined ? "Description unavailable." : props.volumeInfo.description;
+  
   const bookObj = {
       googleId: props.id,
       title: props.volumeInfo.title,
-      authors: props.volumeInfo.authors,
+      authors: authors,
       description: description,
       image: thumbnail,
       link: props.volumeInfo.canonicalVolumeLink
