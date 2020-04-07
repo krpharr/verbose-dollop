@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const booksSchema = new Schema({
+  googleId: {
+    type: String,
+    unique: true
+  },
   title: {
     type: String,
     trim: true,

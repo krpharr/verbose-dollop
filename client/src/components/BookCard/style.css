@@ -1,5 +1,9 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .save-btn {
-  position: absolute;
-  right: 8px;
-  top: 8px;
+  margin-right: 16px;
 }
