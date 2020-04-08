@@ -3,35 +3,30 @@ import API from "../../utils/API";
 import "./style.css";
 
 function BookCard(props){
-  console.log(props.type);
-  // const authors = props.volumeInfo.authors === undefined ? [] : props.volumeInfo.authors;
-  // const thumbnail = props.volumeInfo.imageLinks === undefined ? "/assets/images/unavailable.png" : props.volumeInfo.imageLinks.thumbnail;
-  // const description = props.volumeInfo.description === undefined ? "Description unavailable." : props.volumeInfo.description;
-  
-  // const props = {
-  //     googleId: props.id,
-  //     title: props.volumeInfo.title,
-  //     authors: authors,
-  //     description: description,
-  //     image: thumbnail,
-  //     link: props.volumeInfo.canonicalVolumeLink
-  // };
 
   const handleCardButton = (event) => {
     console.log("handleCardButton: ", props.id);
     console.log(event.target);
-    API.saveBook(props).then(res => {
-      console.log(res);
-      document.getElementById(props.googleId).disabled = true;
-      document.getElementById(props.googleId).textContent = "Saved";
-    });
+    if(props.type === "save"){
+      API.saveBook(props).then(res => {
+        console.log(res);
+        document.getElementById(props.googleId).disabled = true;
+        document.getElementById(props.googleId).textContent = "Saved";
+      });  
+    }else if(props.type === "delete"){
+      API.deleteBook(props._id).then(res => {
+        console.log(res);
+        document.getElementById(props.googleId).disabled = true;
+        document.getElementById(props.googleId).textContent = "Deleted";
+      });
+    }
    };
 
   return(
   <div className="col s12 m7">
     <div className="header-container">
       <h2 className="header">{props.title}</h2>
-      <button className="btn save-btn" id={props.googleId} onClick={(event)=> handleCardButton(event)}>Save</button>
+      <button className="btn save-btn" id={props.googleId} onClick={(event)=> handleCardButton(event)}>{props.type === "save" ? "Save" : "Delete"}</button>
     </div>
     <div className="card horizontal">
       <div className="card-image">
