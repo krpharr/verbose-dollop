@@ -4,11 +4,9 @@ const path = require("path");
 const dotenv = require("dotenv");
 const routes = require("./routes/api");
 
-if (process.env.NODE_ENV === "development") {
-  const result = dotenv.config();
-  if (result.error) {
-    throw result.error;
-  }
+const result = dotenv.config();
+if (result.error) {
+  throw result.error;
 }
 
 const PORT = process.env.PORT || 3001;
