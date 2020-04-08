@@ -4,9 +4,11 @@ const path = require("path");
 const dotenv = require("dotenv");
 const routes = require("./routes/api");
 
-const result = dotenv.config();
-if (result.error) {
-  throw result.error;
+if (process.env.NODE_ENV === "development") {
+  const result = dotenv.config();
+  if (result.error) {
+    throw result.error;
+  }
 }
 
 const PORT = process.env.PORT || 3001;
@@ -14,7 +16,6 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 
 app.use(routes);
