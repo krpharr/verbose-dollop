@@ -20,7 +20,7 @@ function BookCard(props){
         document.getElementById(props.googleId).textContent = "Deleted";
       });
     }
-   };
+  };
 
   return(
   <div className="col s12 m7">
