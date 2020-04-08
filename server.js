@@ -1,21 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-// const dotenv = require("dotenv");
 const router = require("express").Router();
 const routes = require("./routes/api");
-
-// const result = dotenv.config();
-// if (result.error) {
-//   throw result.error;
-// }
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 app.use(routes);
 
@@ -31,27 +24,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));
   });
 }
-
-if (process.env.NODE_ENV === "development") {
-  app.use(express.static("client/public"));
-
-  router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/public/index.html"));
-  });
-
-  router.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/public/index.html"));
-  });
-}
-
-
-// Send every request to the React app
-
-
-// Define any API routes before this runs
-// app.get("*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
   useNewUrlParser: true,
