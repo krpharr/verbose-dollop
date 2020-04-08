@@ -44,9 +44,23 @@ function Search(){
       const {items} = searchResults;
       console.log(items);
       const itemMap = items.map(i => {
+
+      const authors = i.volumeInfo.authors === undefined ? [] : i.volumeInfo.authors;
+      const thumbnail = i.volumeInfo.imageLinks === undefined ? "/assets/images/unavailable.png" : i.volumeInfo.imageLinks.thumbnail;
+      const description = i.volumeInfo.description === undefined ? "Description unavailable." : i.volumeInfo.description;
+              
+      const bookObj = {
+        googleId: i.id,
+        title: i.volumeInfo.title,
+        authors: authors,
+        description: description,
+        image: thumbnail,
+        link: i.volumeInfo.canonicalVolumeLink
+      };
+
         return(
           <li key={i.id}>
-            <BookCard {...i} />
+            <BookCard {...bookObj} type="save"/>
           </li>
         )
       });
