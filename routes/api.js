@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const request = require('request');
-const path = require("path");
+// const path = require("path");
 const Books = require("../models/Books.js");
 
 router.get("/api/googlebooks/:search/:start/:max", (req, res) => {
@@ -49,13 +49,6 @@ router.delete("/api/books/:id", (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./index.html"));
-});
-
-router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./index.html"));
-});
 
 
 module.exports = router;

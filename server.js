@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const path = require("path");
+const path = require("path");
 // const dotenv = require("dotenv");
 const routes = require("./routes/api");
 
@@ -17,14 +17,32 @@ app.use(express.json());
 
 
 app.use(routes);
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  // app.get("*", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  // });
 
+  router.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+
+  router.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
 }
+
+if (process.env.NODE_ENV === "development") {
+  app.use(express.static("client/public"));
+
+  router.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  });
+
+  router.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  });
+}
+
 
 // Send every request to the React app
 
