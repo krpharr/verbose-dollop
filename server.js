@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 const routes = require("./routes/api");
 
-const result = dotenv.config();
-if (result.error) {
-  throw result.error;
-}
+// const result = dotenv.config();
+// if (result.error) {
+//   throw result.error;
+// }
 
 const PORT = process.env.PORT || 3001;
 const app = express();
