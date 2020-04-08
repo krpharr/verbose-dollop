@@ -31,11 +31,17 @@ app.use(routes)
   //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
   // });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://varsphilos:vars-2020@ds263808.mlab.com:63808/heroku_nt0dl4xc", {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true
 });
+
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false,
+//   useUnifiedTopology: true
+// });
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
