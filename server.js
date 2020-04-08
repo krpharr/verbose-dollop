@@ -8,8 +8,6 @@ const result = dotenv.config();
 if (result.error) {
   throw result.error;
 }
-console.log(result.parsed);
-console.log(process.env.API_KEY);
 
 const PORT = process.env.PORT || 3001;
 const app = express();
