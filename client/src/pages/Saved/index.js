@@ -13,12 +13,12 @@ function Saved(){
     });
    }, [])
 
-  const getSavedBooks = () => {
-    API.getBooks().then(res => {
-      console.log(res.data);
-      setSaved(res.data);
-    });
-  };
+  // const getSavedBooks = () => {
+  //   API.getBooks().then(res => {
+  //     console.log(res.data);
+  //     setSaved(res.data);
+  //   });
+  // };
 
   const mapSavedBooks = () => {
     if(saved === undefined)return;
@@ -34,7 +34,7 @@ function Saved(){
 
   return(
     <div className="container">
-      <h1>Saved</h1>
+      <h1>Saved Books</h1>
       <ul>
         {mapSavedBooks()}
       </ul>

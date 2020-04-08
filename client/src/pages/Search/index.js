@@ -6,11 +6,19 @@ function Search(){
   const [search, setSearch] = useState("");
   const [searchResults, setResults] = useState();
   const [start, setStart] = useState(0); // start index for api call
-  const [numItems, setNumItems] = useState(20);  // number of items returned in api call: 10min-40max
+  const [numItems, ] = useState(20);  // number of items returned in api call: 10min-40max
   const [totalItems, setTotalItems] = useState(0);  // total items to paginate through in google api
+  const [saved, setSaved] = useState();
 
   useEffect(() => {
+   API.getBooks().then(res => {
+    const savedIds = res.data.map(book => {
+      return book.googleId;
+    });
+    setSaved(savedIds);
+   }); 
    querySearch();
+   // eslint-disable-next-line
   }, [start])
 
   const querySearch = () => {
@@ -60,7 +68,7 @@ function Search(){
 
         return(
           <li key={i.id}>
-            <BookCard {...bookObj} type="save"/>
+            <BookCard {...bookObj} type="save" saved={saved.includes(i.id) ? true : false}/>
           </li>
         )
       });

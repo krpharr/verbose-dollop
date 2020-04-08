@@ -26,7 +26,14 @@ function BookCard(props){
   <div className="col s12 m7">
     <div className="header-container">
       <h2 className="header">{props.title}</h2>
-      <button className="btn save-btn" id={props.googleId} onClick={(event)=> handleCardButton(event)}>{props.type === "save" ? "Save" : "Delete"}</button>
+      <button 
+        className="btn save-btn" 
+        id={props.googleId} 
+        onClick={(event)=> handleCardButton(event)}
+        disabled={props.saved === true && props.type === "save" ? true : false}
+        >
+        {props.type === "save" ? "Save" : "Delete"}
+      </button>
     </div>
     <div className="card horizontal">
       <div className="card-image">

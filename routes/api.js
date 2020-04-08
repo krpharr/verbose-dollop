@@ -47,10 +47,4 @@ router.delete("/api/books/:id", (req, res) => {
       res.status(400).json(err);
     });
 });
-
-router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
-
 module.exports = router;
