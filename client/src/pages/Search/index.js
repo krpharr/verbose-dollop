@@ -90,12 +90,14 @@ function Search(){
   return(
     <div className="container">
       <h1>Search</h1>
-      <Paginator 
-        searchResults={searchResults} 
-        start={start} numItems={numItems} 
-        totalItems={totalItems} 
-        handlePagination={handlePagination}
-      />
+      <div className="right">
+        <Paginator 
+          searchResults={searchResults} 
+          start={start} numItems={numItems} 
+          totalItems={totalItems} 
+          handlePagination={handlePagination}
+        />
+      </div>
       <form>
         <input 
           type="text"
@@ -105,6 +107,7 @@ function Search(){
         </input>
         <div>
         <button 
+          className="btn"
           type="submit"
           onClick={handleSubmit}
         >Search
@@ -114,17 +117,14 @@ function Search(){
       <ul>
         {mapResults()}
       </ul>
-      <Paginator 
-        searchResults={searchResults} 
-        start={start} numItems={numItems} 
-        totalItems={totalItems} 
-        handlePagination={handlePagination}
-      />
-      {/* <div style={searchResults === undefined ? {display: "none"} : {display: "block"}}>
-        <button className="btn" id="prev" onClick={(event)=>handlePagination(event)}>Prev</button>
-        <span>{(start+1)} - {start+numItems} of ({totalItems})</span>
-        <button className="btn" id="next" onClick={(event)=>handlePagination(event)}>Next</button>
-      </div> */}
+      <div className="center">
+        <Paginator 
+          searchResults={searchResults} 
+          start={start} numItems={numItems} 
+          totalItems={totalItems} 
+          handlePagination={handlePagination}
+        />
+      </div>
     </div>
   );
 };

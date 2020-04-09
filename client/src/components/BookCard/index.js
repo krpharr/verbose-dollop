@@ -29,7 +29,7 @@ function BookCard(props){
         disabled={props.saved === true && props.type === "save" ? true : false}
         >
         {props.type === "save" ? "Save" : "Delete"}
-      </button>
+      </button>     
     </div>
     <div className="card horizontal">
       <div className="card-image">
