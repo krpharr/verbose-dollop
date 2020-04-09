@@ -2,7 +2,6 @@ import axios from "axios";
 
 export default {
   search: function(term, start, max) {
-    console.log(term, start, max)
     return axios.get(`api/googlebooks/${term}/${start}/${max}`);
   },
   getBooks: function() {

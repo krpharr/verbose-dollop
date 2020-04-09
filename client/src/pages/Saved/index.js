@@ -15,8 +15,9 @@ function Saved(){
   const mapSavedBooks = () => {
     if(saved === undefined)return;
     const savedMap = saved.map(book => {
+      const keyVal = book.googleId === undefined ? book._id : book.googleId;
       return(
-        <li key={book.googleId}>
+        <li key={keyVal}>
           <BookCard {...book} type="delete" />
         </li>
       );
