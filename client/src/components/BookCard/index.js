@@ -5,17 +5,13 @@ import "./style.css";
 function BookCard(props){
 
   const handleCardButton = (event) => {
-    console.log("handleCardButton: ", props.id);
-    console.log(event.target);
     if(props.type === "save"){
       API.saveBook(props).then(res => {
-        console.log(res);
         document.getElementById(props.googleId).disabled = true;
         document.getElementById(props.googleId).textContent = "Saved";
       });  
     }else if(props.type === "delete"){
       API.deleteBook(props._id).then(res => {
-        console.log(res);
         document.getElementById(props.googleId).disabled = true;
         document.getElementById(props.googleId).textContent = "Deleted";
       });

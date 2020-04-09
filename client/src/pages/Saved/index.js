@@ -8,17 +8,9 @@ function Saved(){
 
   useEffect(() => {
     API.getBooks().then(res => {
-      console.log(res.data);
       setSaved(res.data);
     });
    }, [])
-
-  // const getSavedBooks = () => {
-  //   API.getBooks().then(res => {
-  //     console.log(res.data);
-  //     setSaved(res.data);
-  //   });
-  // };
 
   const mapSavedBooks = () => {
     if(saved === undefined)return;

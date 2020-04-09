@@ -22,13 +22,10 @@ function Search(){
   }, [start])
 
   const querySearch = () => {
-    console.log("search:", search);
     if(search === "")return;
  
     API.search(search, start, numItems).then(res => {
       const {data} = res;
-      console.log(data);      
-      console.log(data.totalItems);
       setTotalItems(data.totalItems);
       setResults(data);
     });
@@ -41,16 +38,13 @@ function Search(){
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(search);
     setStart(0);
     querySearch();
   };
 
   const mapResults = () => {
     if(searchResults !== undefined){
-      console.log("searchResults",searchResults, typeof searchResults)
       const {items} = searchResults;
-      console.log(items);
       const itemMap = items.map(i => {
 
       const authors = i.volumeInfo.authors === undefined ? [] : i.volumeInfo.authors;
@@ -77,22 +71,17 @@ function Search(){
   };
 
   const handlePagination = (event) => {
-    console.log(event.target.id);
     const id = event.target.id;
     if(id === "prev"){
       if(start > 0){
         let n = start - numItems;
         setStart(n);
-        // querySearch();
       }
     }
     else if(id === "next"){
       if(start < totalItems){
         let n = start + numItems;
-        // console.log("n:", n, typeof n);
         setStart(n);
-        // console.log("start:", start, typeof start);
-        // querySearch();
       }
     }
   };

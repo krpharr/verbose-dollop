@@ -8,8 +8,6 @@ import NoMatch from "./pages/NoMatch"
 import 'materialize-css/dist/css/materialize.min.css';
 import M from  'materialize-css/dist/js/materialize.min.js';
 
-console.log(process.env.API_KEY);
-
 class App extends React.Component {
   
   componentDidMount() {
