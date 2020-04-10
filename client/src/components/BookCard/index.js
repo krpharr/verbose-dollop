@@ -35,8 +35,13 @@ function BookCard(props){
       <div className="card-image">
         <img src={props.image} alt="book cover"></img>
       </div>
+      <span className="activator">
+          <i className="material-icons right">more_vert</i>
+      </span>       
+
       <div className="card-stacked">
-        <div className="card-content">
+        <div className="card-content card-reveal">
+        <span className="card-title grey-text text-darken-4">{props.title}<i className="material-icons right">close</i></span>
           <ul>
             {props.authors.map((a,i) => {
               return(
