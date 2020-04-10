@@ -10,8 +10,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(routes);
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -24,6 +22,8 @@ if (process.env.NODE_ENV === "production") {
   //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
   // });
 }
+
+app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
   useNewUrlParser: true,
