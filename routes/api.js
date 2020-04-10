@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const path = require("path");
 const request = require('request');
 const Books = require("../models/Books.js");
 
@@ -47,4 +48,11 @@ router.delete("/api/books/:id", (req, res) => {
       res.status(400).json(err);
     });
 });
+
+// If no API routes are hit, send the React app
+router.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
+
 module.exports = router;
