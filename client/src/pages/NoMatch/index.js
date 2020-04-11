@@ -2,9 +2,9 @@ import React from "react";
 
 function NoMatch(){
   return(
-    <div>
+    <main>
       <h1>NoMatch</h1>
-    </div>
+    </main>
   );
 };
 

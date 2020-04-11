@@ -88,44 +88,46 @@ function Search(){
   };
 
   return(
-    <div className="container">
-      <h1>Search</h1>
-      <div className="right">
-        <Paginator 
-          searchResults={searchResults} 
-          start={start} numItems={numItems} 
-          totalItems={totalItems} 
-          handlePagination={handlePagination}
-        />
-      </div>
-      <form>
-        <input 
-          type="text"
-          name="search"
-          onChange={handleInputChange}
-        >
-        </input>
-        <div>
-        <button 
-          className="btn"
-          type="submit"
-          onClick={handleSubmit}
-        >Search
-        </button>
+    <main>
+      <div className="container">
+        <h1>Search</h1>
+        <div className="right">
+          <Paginator 
+            searchResults={searchResults} 
+            start={start} numItems={numItems} 
+            totalItems={totalItems} 
+            handlePagination={handlePagination}
+          />
         </div>
-      </form>
-      <ul>
-        {mapResults()}
-      </ul>
-      <div className="center">
-        <Paginator 
-          searchResults={searchResults} 
-          start={start} numItems={numItems} 
-          totalItems={totalItems} 
-          handlePagination={handlePagination}
-        />
+        <form>
+          <input 
+            type="text"
+            name="search"
+            onChange={handleInputChange}
+          >
+          </input>
+          <div>
+          <button 
+            className="btn"
+            type="submit"
+            onClick={handleSubmit}
+          >Search
+          </button>
+          </div>
+        </form>
+        <ul>
+          {mapResults()}
+        </ul>
+        <div className="center">
+          <Paginator 
+            searchResults={searchResults} 
+            start={start} numItems={numItems} 
+            totalItems={totalItems} 
+            handlePagination={handlePagination}
+          />
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

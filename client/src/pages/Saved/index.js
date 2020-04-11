@@ -26,12 +26,14 @@ function Saved(){
   };
 
   return(
-    <div className="container">
-      <h1>Saved Books</h1>
-      <ul>
-        {mapSavedBooks()}
-      </ul>
-    </div>
+    <main>
+      <div className="container">
+        <h1>Saved Books</h1>
+        <ul>
+          {mapSavedBooks()}
+        </ul>
+      </div>
+    </main>
   );
 };
 
