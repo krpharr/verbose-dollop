@@ -5,7 +5,7 @@
 <p>
 Enter search terms, paginate through results and click Save button to add to your future reading list.
 If a previously saved book appears in a new search, the save button will be disabled indicating that the book has already been added to your list.  Each result has link to 
-Google Books when you are ready to purchase or obtain the book. You list os saved books are shown by clicking the Saved menu item and book can be deleted from your list by simply clicking the Delete button.
+Google Books when you are ready to purchase or obtain the book. Your list of saved books are shown by clicking the Saved menu item and books can be deleted from your list by simply clicking the Delete button.
 </p>
 
 ## Getting Started
