@@ -4,8 +4,9 @@ import NavBar from "./components/NavBar";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch"
-import 'materialize-css/dist/css/materialize.min.css';
+// import 'materialize-css/dist/css/materialize.min.css';
 // import './dev/materialize.css';
+import "./materialize.min.css";
 import M from  'materialize-css/dist/js/materialize.min.js';
 
 class App extends React.Component {
